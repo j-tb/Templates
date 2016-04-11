@@ -6,25 +6,25 @@
       "value": "West US"
     },
     "vnetName": {
-      "value": "VNet1"
+      "value": "SmallNet"
     },
     "vnetAddressPrefix": {
       "value": "192.168.0.0/16"
     },
     "subnet1Name": {
-      "value": "Subnet1"
+      "value": "Subnet20"
     },
     "subnet1Prefix": {
       "value": "192.168.20.0/24"
     },
     "subnet2Name": {
-      "value": "Subnet2"
+      "value": "Subnet30"
     },
     "subnet2Prefix": {
       "value": "192.168.30.0/24"
     },
     "subnet3Name": {
-      "value": "Subnet3"
+      "value": "Subnet40"
     },
     "subnet3Prefix": {
       "value": "192.168.40.0/24"
