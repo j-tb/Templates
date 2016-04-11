@@ -4,7 +4,7 @@
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "West US",
+      "defaultValue": "West US"
       "metadata": {
         "description": "Deployment location"
       }
@@ -72,7 +72,7 @@
   },
   "resources": [
     {
-      "apiVersion": "2105-06-15",
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[parameters('location')]",
