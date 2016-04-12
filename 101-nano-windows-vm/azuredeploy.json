@@ -9,6 +9,18 @@
           "metadata": {
         "description": "Restricts choices to wher premium storage is located in the US."
       }
+    },
+      "dnsNameForPublicIP": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+      }
+    },
+      "newStorageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+      }
     }
     },
    "variables": {
@@ -19,7 +31,6 @@
        "subnetPrefix": "192.168.100.0/24",
        "publicIPAddressName": "jsontestip",
        "publicIPAddressType": "Dynamic",
-       "dnsNameForPublicIP": "jsontestlab",
        "nicName": "jsontestnic",
        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
@@ -30,7 +41,7 @@
    "resources": [ 
      {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "jsonlabstor",
+      "name": "[paramenters('newStorageAccountName')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "properties": {
@@ -68,7 +79,7 @@
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "dnsSettings": {
-          "domainNameLabel": "[variables('dnsNameForPublicIP')]"
+          "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
         }
       }
     },
