@@ -12,12 +12,14 @@
     },
       "dnsNameForPublicIP": {
       "type": "string",
-      "metadata": {
+      "defaultValue": "jsontestlab",
+            "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
     },
       "newStorageAccountName": {
       "type": "string",
+      "defaultValue": "jsonlabstor",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
