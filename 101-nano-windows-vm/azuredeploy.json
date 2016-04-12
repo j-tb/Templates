@@ -12,7 +12,7 @@
     },
       "dnsNameForPublicIP": {
       "type": "string",
-      "defaultValue": "jsontestlab",
+      "defaultValue": "jsontestpublicip",
             "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
@@ -33,6 +33,7 @@
        "subnetPrefix": "192.168.100.0/24",
        "publicIPAddressName": "jsontestip",
        "publicIPAddressType": "Dynamic",
+       "dnsNameForPublicIP": "jsontestpublicip",
        "nicName": "jsontestnic",
        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
@@ -81,7 +82,7 @@
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+          "domainNameLabel": "[variables('dnsNameForPublicIP')]"
         }
       }
     },

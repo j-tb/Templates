@@ -12,7 +12,7 @@
       "value": "Passw0rd!"
     },
     "dnsNameForPublicIP": {
-      "value": "jsontestlab"
+      "value": "jsontestpublicip"
     },
     "location": {
       "value": "West US"
