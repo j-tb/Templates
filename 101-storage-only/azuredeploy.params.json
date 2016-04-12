@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "eaststoronly"
+      "value": "weststor2"
      },
     "location": {
-      "value": "East US"
+      "value": "West US"
     }
 
   }

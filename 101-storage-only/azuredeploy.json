@@ -5,6 +5,7 @@
    "parameters": {
     "newStorageAccountName": {
       "type": "string",
+      "defaultValue": "eaststorsurprise",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
@@ -12,7 +13,7 @@
    
     "location": {
       "type": "string",
-      "defaultValue": "West US",
+      "defaultValue": "East US",
       "metadata": {
         "description": "Restricts choices to wher premium storage is located in the US."
       }
@@ -21,7 +22,7 @@
       
    "variables": {
        "location": "West US",
-       "newStorageAccountName": "weststoronly"
+       "newStorageAccountName": "weststor1"
      
     },
    
