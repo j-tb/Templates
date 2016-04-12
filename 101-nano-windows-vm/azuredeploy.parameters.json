@@ -16,10 +16,8 @@
     },
     "location": {
       "value": "West US"
-    },
-    "sizeOfEachDataDiskInGB": {
-      "value": "5"
     }
+
   }
 }
 

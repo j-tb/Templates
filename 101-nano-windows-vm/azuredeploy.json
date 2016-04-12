@@ -10,13 +10,6 @@
         "description": "Restricts choices to wher premium storage is located in the US."
       }
     },
-      "dnsNameForPublicIP": {
-      "type": "string",
-      "defaultValue": "jsontestpublicip",
-            "metadata": {
-        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-      }
-    },
       "newStorageAccountName": {
       "type": "string",
       "defaultValue": "jsonlabstor",
@@ -33,12 +26,17 @@
        "subnetPrefix": "192.168.100.0/24",
        "publicIPAddressName": "jsontestip",
        "publicIPAddressType": "Dynamic",
-       "dnsNameForPublicIP": "jsontestpublicip",
+       "dnsNameForPublicIP": "jsontestcloud",
        "nicName": "jsontestnic",
        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
        "vmName": "MyNanoVM",
-       "vmSize": "Standard_A1"
+       "vmSize": "Standard_A1",
+       "imagePublisher": "MicrosoftWindowsServer",
+       "imageOffer": "WindowsServer",
+       "sku": "2016-Nano-Server-Technical-Preview",
+       "vmStorageAccountContainerName": "vhds",
+       "OSDiskName": "osdiskfornano"
      },
    
    "resources": [ 
@@ -101,19 +99,62 @@
           {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
+             "privateIPAllocationMethod": "Dynamic",
+             "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
               },
               "subnet": {
                 "id": "[variables('subnetRef')]"
               }
-            }
+              }
           }
         ]
       }
-    }
+    },
     
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[variables('vmName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+        "vmSize": "[variables('vmSize')]"
+        },
+        "osProfile": {
+         "computerName": "[variables('vmName')]",
+         "adminUsername": "[parameters('adminUsername')]",
+         "adminPassword": "[parameters('adminPassword')]"
+        },
+        "storageProfile": {
+         "imageReference": {
+            "publisher": "[variables('imagePublisher')]",
+            "offer": "[variables('imageOffer')]",
+            "sku": "[variables('windowsOSVersion')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "osdisk",
+            "vhd": {
+             "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+            },
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+            }
+            },  
+            "networkProfile": {
+            "networkInterfaces": [             
+              { 
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+              }
+          ]
+        }
+      }
+    }
     
     ]
 
