@@ -44,7 +44,7 @@
    "resources": [ 
      {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[paramenters('newStorageAccountName')]",
+      "name": "[parameters('newStorageAccountName')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "properties": {
