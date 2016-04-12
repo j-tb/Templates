@@ -20,6 +20,9 @@
        "publicIPAddressName": "jsontestip",
        "publicIPAddressType": "Dynamic",
        "dnsNameForPublicIP": "jsontestlab",
+       "nicName": "jsontestnic",
+       "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+       "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
        "vmName": "MyNanoVM",
        "vmSize": "Standard_A1"
      },
@@ -68,9 +71,36 @@
           "domainNameLabel": "[variables('dnsNameForPublicIP')]"
         }
       }
-    }
+    },
 
-     
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[variables('nicName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+              },
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              }
+            }
+          }
+        ]
+      }
+    }
+    
+    
     ]
 
 }
