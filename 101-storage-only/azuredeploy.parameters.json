@@ -3,19 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "jsonlabstor"
-    },
-    "adminUsername": {
-      "value": "sysadmin"
-    },
-    "adminPassword": {
-      "value": "Passw0rd!"
-    },
-    "dnsNameForPublicIP": {
-      "value": "jsontestpublicip"
-    },
+      "value": "eaststoronly"
+     },
     "location": {
-      "value": "West US"
+      "value": "East US"
     }
 
   }

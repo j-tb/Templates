@@ -1,16 +1,42 @@
 {
    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
-   "parameters": { },
+   
+   "parameters": {
+    "newStorageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+      }
+    },
+   
+    "location": {
+      "type": "string",
+      "defaultValue": "West US",
+      "metadata": {
+        "description": "Restricts choices to wher premium storage is located in the US."
+      }
+    }
+   },
       
    "variables": {
        "location": "West US",
-       "newStorageAccountName": "labstoronly"
+       "newStorageAccountName": "weststoronly"
      
-     },
+    },
    
    "resources": [ 
      {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('newStorageAccountName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+     },
+  
+      {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('newStorageAccountName')]",
       "apiVersion": "2015-06-15",
@@ -18,8 +44,7 @@
       "properties": {
         "accountType": "Standard_LRS"
       }
-     }
-     
+     }   
 
     
     ]
