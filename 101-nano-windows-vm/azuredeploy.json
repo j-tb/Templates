@@ -2,7 +2,7 @@
    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-           "newStorageAccountName": {
+           "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
@@ -13,7 +13,7 @@
    "resources": [ 
      {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('newStorageAccountName')]",
+      "name": "[parameters('storageAccountName')]",
       "apiVersion": "2015-06-15",
       "location": "West US",
       "properties": {
