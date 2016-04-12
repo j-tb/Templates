@@ -13,7 +13,7 @@
    "resources": [ 
      {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('storageAccountName')]",
+      "name": "jsonlabstor",
       "apiVersion": "2015-06-15",
       "location": "West US",
       "properties": {
