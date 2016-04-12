@@ -37,7 +37,7 @@
        "sku": "2016-Nano-Server-Technical-Preview",
        "vmStorageAccountContainerName": "vhds",
        "OSDiskName": "osdiskfornano",
-        "adminUsername": "sysadmin",
+        "adminUsername": "Administrator",
         "adminPassword": "Passw0rd!"
        
      },
