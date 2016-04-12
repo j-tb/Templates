@@ -22,7 +22,7 @@
       
    "variables": {
        "location": "West US",
-       "newStorageAccountName": "weststor1"
+       "newStorageAccountName": "labweststor1"
      
     },
    

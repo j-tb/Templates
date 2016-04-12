@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "weststor2"
+      "value": "labweststor2"
      },
     "location": {
       "value": "West US"
