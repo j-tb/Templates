@@ -13,6 +13,7 @@
     },
    "variables": {
        "virtualNetworkName": "JSONNet",
+       "location": "West US",
        "addressPrefix": "192.168.0.0/16",
        "subnetName": "NanoSub",
        "subnetPrefix": "192.168.100.0/24",
@@ -64,7 +65,7 @@
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "dnsSettings": {
-          "domainNameLabel": "[variable('dnsNameForPublicIP')]"
+          "domainNameLabel": "[variables('dnsNameForPublicIP')]"
         }
       }
     }
