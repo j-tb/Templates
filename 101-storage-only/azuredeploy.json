@@ -13,7 +13,11 @@
    
     "location": {
       "type": "string",
-      "defaultValue": "West US",
+      "defaultValue": "East US",
+      "allowedValues": [
+        "West US",
+        "East US"
+      ],
       "metadata": {
         "description": "Restricts choices to wher premium storage is located in the US."
       }
@@ -22,7 +26,7 @@
       
    "variables": {
        "location": "West US",
-       "newStorageAccountName": "labweststor1"
+       "newStorageAccountName": "labweststor2"
      
     },
    
