@@ -3,31 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-      "value": "West US"
+      "value": "East US"
     },
     "vnetName": {
-      "value": "SmallNet"
+      "value": "BigNet"
     },
     "vnetAddressPrefix": {
-      "value": "192.168.0.0/16"
+      "value": "10.10.0.0/16"
     },
     "subnet1Name": {
-      "value": "Subnet20"
+      "value": "Subnet10"
     },
     "subnet1Prefix": {
-      "value": "192.168.20.0/24"
+      "value": "10.10.10.0/24"
     },
     "subnet2Name": {
-      "value": "Subnet30"
+      "value": "Subnet20"
     },
     "subnet2Prefix": {
-      "value": "192.168.30.0/24"
+      "value": "10.10.20.0/24"
     },
     "subnet3Name": {
-      "value": "Subnet40"
+      "value": "Subnet30"
     },
     "subnet3Prefix": {
-      "value": "192.168.40.0/24"
+      "value": "10.10.30.0/24"
     }
   }
 }
