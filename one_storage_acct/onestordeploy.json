@@ -5,7 +5,7 @@
    "parameters": {
     "newStorageAccountName": {
       "type": "string",
-      "defaultValue": "wrongnamestor",
+      "defaultValue": "singlestor",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
@@ -19,17 +19,11 @@
         "East US"
       ],
       "metadata": {
-        "description": "Restricts choices to where premium storage is located in the US."
+        "description": "Restricts choices to wher premium storage is located in the US."
       }
     }
    },
-      
-   "variables": {
-       "location": "West US",
-       "newStorageAccountName": "labweststor2"
-           
-    },
-   
+    
    "resources": [ 
      {
       "type": "Microsoft.Storage/storageAccounts",
@@ -39,19 +33,8 @@
       "properties": {
         "accountType": "Standard_LRS"
       }
-     },
+     }
   
-      {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('newStorageAccountName')]",
-      "apiVersion": "2015-06-15",
-      "location": "[variables('location')]",
-      "properties": {
-        "accountType": "Standard_LRS"
-      }
-     }   
-
-    
-    ]
+      ]
 
 }
