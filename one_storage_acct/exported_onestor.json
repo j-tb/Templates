@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccounts_singlestor_name": {
+            "defaultValue": "singlestor",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/8bae2860-70c1-4614-b55a-60e97f4248dc/resourceGroups/onestorage/providers/Microsoft.Storage/storageAccounts/singlestor'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccounts_singlestor_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "eastus",
+            "tags": {},
+            "properties": {
+                "accountType": "Standard_LRS"
+            },
+            "dependsOn": []
+        }
+    ]
+}

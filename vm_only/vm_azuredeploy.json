@@ -1,0 +1,88 @@
+{
+   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      
+      "location": {
+      "type": "string",
+      "defaultValue": "West US",
+          "metadata": {
+        "description": "Restricts choices to wher premium storage is located in the US."
+      }
+      }
+    },
+  
+   "variables": {
+       "virtualNetworkName": "JSONNet",
+       "location": "West US",
+       "addressPrefix": "192.168.0.0/16",
+       "subnetName": "NanoSub",
+       "subnetPrefix": "192.168.100.0/24",
+       "publicIPAddressName": "jsontestip",
+       "publicIPAddressType": "Dynamic",
+       "dnsNameForPublicIP": "jsontestcloud",
+       "nicName": "jsontestnic",
+       "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+       "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
+       "vmName": "MyNanoVM",
+       "vmSize": "Standard_A1",
+       "imagePublisher": "MicrosoftWindowsServer",
+       "imageOffer": "WindowsServer",
+       "sku": "2016-Nano-Server-Technical-Preview",
+       "vmStorageAccountContainerName": "vhds",
+       "OSDiskName": "osdiskfornano",
+        "adminUsername": "Administrator",
+        "adminPassword": "Passw0rd!"
+       
+     },
+   
+   "resources": [ 
+     
+   
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[variables('vmName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+        "vmSize": "[variables('vmSize')]"
+        },
+        "osProfile": {
+         "computerName": "[variables('vmName')]",
+         "adminUsername": "[variables('adminUsername')]",
+         "adminPassword": "[variables('adminPassword')]"
+        },
+        "storageProfile": {
+         "imageReference": {
+            "publisher": "[variables('imagePublisher')]",
+            "offer": "[variables('imageOffer')]",
+            "sku": "[variables('windowsOSVersion')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "osdisk",
+            "vhd": {
+             "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+            },
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+            }
+            },  
+            "networkProfile": {
+            "networkInterfaces": [             
+              { 
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+              }
+          ]
+        }
+      }
+    }
+    
+    ]
+
+}

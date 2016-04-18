@@ -1,0 +1,69 @@
+{
+   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      
+      "location": {
+      "type": "string",
+      "defaultValue": "West US"          
+      }
+    },
+   "variables": {
+       "virtualNetworkName": "SmallNet",
+       "subnetName": "Subnet20",
+       "publicIPAddressName": "smallcloudpubip",
+       "publicIPAddressType": "Dynamic",
+       "dnsNameForPublicIP": "smallcloudlab",
+       "nicName": "smallcloud_nic1",
+       "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+       "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
+        
+     },
+   
+   "resources": [ 
+      
+  
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('publicIPAddressName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+        "dnsSettings": {
+          "domainNameLabel": "[variables('dnsNameForPublicIP')]"
+        }
+      }
+    },
+
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[variables('nicName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+             "privateIPAllocationMethod": "Dynamic",
+             "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+              },
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              }
+              }
+          }
+        ]
+      }
+    }
+   
+ 
+    ]
+
+}
