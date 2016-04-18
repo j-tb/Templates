@@ -1,16 +1,57 @@
 {
    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
-   "parameters": {
-      
+   "parameters": { 
+            
       "location": {
       "type": "string",
-      "defaultValue": "West US"          
-      }
+      "defaultValue": "West US" 
+    },      
+      "vnetName": {
+      "type": "string",
+      "defaultValue": "SmallNet"    
     },
+    "vnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "192.168.0.0/16"
+      
+    },
+    "subnet1Prefix": {
+      "type": "string",
+      "defaultValue": "192.168.20.0/24"
+    
+    },
+    "subnet1Name": {
+      "type": "string",
+      "defaultValue": "Subnet20"
+ 
+    },
+    "subnet2Prefix": {
+      "type": "string",
+      "defaultValue": "192.168.30.0/24"
+ 
+    },
+    "subnet2Name": {
+      "type": "string",
+      "defaultValue": "Subnet30"
+    },
+       
+      "subnet3Prefix": {
+      "type": "string",
+      "defaultValue": "192.168.40.0/24"
+      },
+        
+    "subnet3Name": {
+      "type": "string",
+      "defaultValue": "Subnet40"
+
+    }
+   },
+
    "variables": {
        "virtualNetworkName": "SmallNet",
        "subnetName": "Subnet20",
+       "addressPrefix": "192.168.0.0/16",
        "publicIPAddressName": "smallcloudpubip",
        "publicIPAddressType": "Dynamic",
        "dnsNameForPublicIP": "smallcloudlab",
@@ -35,7 +76,7 @@
         }
       }
     },
-
+ 
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkInterfaces",
@@ -61,8 +102,41 @@
           }
         ]
       }
-    }
+    },
    
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('vnetName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vnetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('subnet1Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet1Prefix')]"
+            }
+          },
+          {
+            "name": "[parameters('subnet2Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet2Prefix')]"
+            }
+          },
+          {
+            "name": "[parameters('subnet3Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet3Prefix')]"
+            }
+          }
+        ]
+      }
+    }
  
     ]
 
