@@ -75,11 +75,14 @@
       "defaultValue": "Subnet40",
       "metadata": {
         "description": "Subnet 3 Name"
-      }
-    },
+      },
+    "networkSecurityGroupName": {
+            "defaultValue": "NanoVMGroup",
+            "type": "String"
+        },
     "windowsOSVersion": {
       "type": "string",
-      "defaultValue": "2016-Nano-Server-Technical-Preview",
+      "defaultValue": "2012-R2-Datacenter",
       "allowedValues": [
         "2008-R2-SP1",
         "2012-Datacenter",
@@ -99,13 +102,11 @@
         "description": "Password for the Virtual Machine."
       }
     }
+    }
    },
       
     "variables": {
        "apiVersion": "2015-06-15",
-       "virtualNetworkName": "SmallNet",
-       "subnetName": "Subnet20",
-       "addressPrefix": "192.168.0.0/16",
        "publicIPAddressName": "smallcloudpubip",
        "publicIPAddressType": "Dynamic",
        "dnsNameForPublicIP": "smallcloudlab",
@@ -121,6 +122,7 @@
      
         
     },
+    
     
    "resources": [ 
      
@@ -141,6 +143,7 @@
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+        "idleTimeoutInMinutes": 4,
         "dnsSettings": {
           "domainNameLabel": "[variables('dnsNameForPublicIP')]"
         }
@@ -181,6 +184,57 @@
       }
      },
      
+     {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('networkSecurityGroupName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('location')]",
+      "properties": {
+            "securityRules": [
+                {
+                    "name": "http",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "80",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 100,
+                        "direction": "Inbound"
+                    }
+                  },
+                 {
+                    "name": "winrm",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "5985-5986",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 110,
+                        "direction": "Inbound"
+                    }
+                  },
+                  {
+                    "name": "rdp",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "3389",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 120,
+                        "direction": "Inbound"
+                    }
+                 }
+                ]
+            },
+            "dependsOn": []
+        },
+     
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkInterfaces",
@@ -188,7 +242,8 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -204,12 +259,18 @@
               }
               }
           }
-  
-        ]
+        ],
+       "dnsSettings": {
+         "dnsServers": []
+       },
+       "enableIPForwarding": false,
+       "networkSecurityGroup": {
+               "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+            }
       }
-      
     },
-    
+      
+         
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
@@ -261,8 +322,9 @@
         }
 
       }
-
+      
     
       ]
-
+    
+ 
 }
