@@ -75,11 +75,12 @@
       "defaultValue": "Subnet40",
       "metadata": {
         "description": "Subnet 3 Name"
-      },
+      }
+    },
     "networkSecurityGroupName": {
             "defaultValue": "NanoVMGroup",
-            "type": "String"
-        },
+            "type": "string"
+    },
     "windowsOSVersion": {
       "type": "string",
       "defaultValue": "2012-R2-Datacenter",
@@ -102,7 +103,7 @@
         "description": "Password for the Virtual Machine."
       }
     }
-    }
+ 
    },
       
     "variables": {
