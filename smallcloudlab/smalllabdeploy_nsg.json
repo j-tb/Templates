@@ -78,12 +78,12 @@
       }
     },
     "networkSecurityGroupName": {
-            "defaultValue": "NanoVMGroup",
+            "defaultValue": "NanoVMnsg",
             "type": "string"
     },
     "windowsOSVersion": {
       "type": "string",
-      "defaultValue": "2012-R2-Datacenter",
+      "defaultValue": "2016-Nano-Server-Technical-Preview",
       "allowedValues": [
         "2008-R2-SP1",
         "2012-Datacenter",
@@ -193,19 +193,6 @@
       "properties": {
             "securityRules": [
                 {
-                    "name": "http",
-                    "properties": {
-                        "protocol": "Tcp",
-                        "sourcePortRange": "*",
-                        "destinationPortRange": "80",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "*",
-                        "access": "Allow",
-                        "priority": 100,
-                        "direction": "Inbound"
-                    }
-                  },
-                 {
                     "name": "winrm",
                     "properties": {
                         "protocol": "Tcp",
