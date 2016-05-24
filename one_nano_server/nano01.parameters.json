@@ -5,7 +5,7 @@
   
   "parameters": {
     "newStorageAccountName": {
-      "value": "imperfectstor"
+      "value": "nanonanostor"
     },
     "adminUsername": {
       "value": "sysadmin"
@@ -14,16 +14,16 @@
       "value": "Passw0rd!"
     },
     "dnsNameForPublicIP": {
-      "value": "imperfectnano01"
+      "value": "smallnano01"
     },
     "location": {
       "value": "West US"
     },
     "vnetName": {
-      "value": "ImperfectNet"
+      "value": "NanoNet"
     },
     "networkSecurityGroupName": {
-      "value": "ImperfectNANOnsg"
+      "value": "NANOnsg"
     },
     "windowsOSVersion": {
       "value": "2016-Nano-Server-Technical-Preview"
@@ -32,10 +32,10 @@
       "value": "NANO01_nic1"
     },
     "publicIPAddressName": {
-      "value": "imperfectlab_NANO01"
+      "value": "nanolab_NANO01"
     },
     "vmName": {
-      "value": "ImperfectNANO01"
+      "value": "nanoNANO01"
     },
      "whichSubnet": {
       "value": "Subnet30"
