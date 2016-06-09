@@ -5,7 +5,7 @@
    "parameters": {
     "newStorageAccountName": {
       "type": "string",
-      "defaultValue": "smallstor",
+      "defaultValue": "nanosstor",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
@@ -23,7 +23,7 @@
     },
     "vnetName": {
       "type": "string",
-      "defaultValue": "SmallNet",
+      "defaultValue": "NanosNet",
       "metadata": {
         "description": "VNet name"
       }
@@ -78,7 +78,7 @@
       }
     },
     "networkSecurityGroupName": {
-            "defaultValue": "NanoVMnsg",
+            "defaultValue": "NanosVMnsg",
             "type": "string"
     },
     "windowsOSVersion": {
@@ -102,7 +102,8 @@
       "type": "securestring",
       "metadata": {
         "description": "Password for the Virtual Machine."
-      },
+      }
+    },
       
     "count": { 
       "type": "int", 
@@ -111,11 +112,11 @@
     
     "dnsNameForPublicIP": {
       "type": "string",
-      "defaultValue": "smallcloudlab"
+      "defaultValue": "nanoslab"
     },
     "nicName": {
       "type": "string",
-      "defaultValue": "smallcloud_nic"
+      "defaultValue": "nanos_nic"
     },
     "publicIPAddressName": {
       "type": "string",
@@ -139,7 +140,6 @@
          ]
     }
 
-   }
    },
       
     "variables": {
