@@ -261,10 +261,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat(parameters('nicName'), copyIndex())]",
       "location": "[parameters('location')]",
-      "copy": {
-        "name": "niccopy",
-        "count": "[parameters('count')]"
-      },
+    
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
         "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
@@ -292,6 +289,10 @@
        "networkSecurityGroup": {
                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
             }
+      },
+       "copy": {
+        "name": "niccopy",
+        "count": "[parameters('count')]"
       }
     },
       
@@ -301,13 +302,14 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('vmName'), copyIndex())]",
       "location": "[parameters('location')]",
-        "copy": {
+      "copy": {
         "name": "vmcopy",
         "count": "[parameters('count')]"
         },
       "dependsOn": [
+        
         "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-        "[concat('Microsoft.Network/networkInterfaces/', concat(parameters('nicName'), copyIndex()))]"
+        "[concat('Microsoft.Network/networkInterfaces/',parameters('nicName'), copyIndex()))]"
       ],
       "properties": {
         "hardwareProfile": {
