@@ -309,7 +309,7 @@
       "dependsOn": [
         
         "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-        "[niccopy]"
+        "niccopy"
       ],
       "properties": {
         "hardwareProfile": {
