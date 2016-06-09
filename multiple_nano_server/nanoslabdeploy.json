@@ -126,6 +126,11 @@
       "type": "string",
       "defaultValue": "NanoVM"
     },
+    "osDiskName": {
+      "type": "string",
+      "defaultValue": "osdisk_" 
+    },
+    
     "vmSize": {
       "type": "string",
       "defaultValue": "Standard_A1"
@@ -149,8 +154,7 @@
        "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('whichSubnet'))]",
        "vmStorageAccountContainerName": "vhds",
        "imagePublisher": "MicrosoftWindowsServer",
-       "imageOffer": "WindowsServer",
-       "osDiskName": "[concat('osdisk_', concat(parameters('vmName'), copyIndex()))]"    
+       "imageOffer": "WindowsServer"  
     },
     
     
@@ -297,9 +301,13 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('vmName'), copyIndex())]",
       "location": "[parameters('location')]",
+        "copy": {
+        "name": "vmcopy",
+        "count": "[parameters('count')]"
+        },
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-        "[concat('Microsoft.Network/networkInterfaces/', concat(parameters('nicName'), copyIndex()))]"
+        "[niccopy]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -318,9 +326,9 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
+            "name": "[concat('osdisk_', concat(parameters('vmName'), copyIndex()))]" ,
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',parameters('vmName'), copyIndex()),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
