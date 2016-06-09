@@ -300,7 +300,7 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[concat(parameters('vmName'), copyIndex())]",
+      "name": "[concat('NanoVM-', copyIndex())]", 
       "location": "[parameters('location')]",
       "copy": {
         "name": "vmcopy",
