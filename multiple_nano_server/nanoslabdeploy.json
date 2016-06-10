@@ -111,16 +111,21 @@
     },
     
     "dnsNameForPublicIP": {
-      "type": "string",
-      "defaultValue": "nanoslab"
+      "type": "array",
+         "defaultValue": [ 
+         "NanoA", 
+         "NanoB", 
+         "NanoC" 
+         ] 
     },
+  
     "nicName": {
       "type": "string",
       "defaultValue": "nanos_nic"
     },
     "publicIPAddressName": {
       "type": "string",
-      "defaultValue": "smallcloudpubip"
+      "defaultValue": "nicpubip"
     },
     "vmName": {
       "type": "string",
@@ -173,14 +178,18 @@
      {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2015-06-15",
-      "name": "[parameters('publicIPAddressName')]",
+      "name": "[concat(parameters('publicIPAddressName'), parameters('dnsNameForPublicIP')[copyIndex()])]", 
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "idleTimeoutInMinutes": 4,
         "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+          "domainNameLabel": "[concat(parameters('dnsNameForPublicIP')[copyIndex()])]"
         }
+      },
+       "copy": {
+        "name": "pubipcopy",
+        "count": "[parameters('count')]"
       }
      },
      
