@@ -272,7 +272,7 @@
       "location": "[parameters('location')]",
     
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+        "pubipcopy",
         "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
         "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
       ],
@@ -283,7 +283,7 @@
             "properties": {
              "privateIPAllocationMethod": "Dynamic",
              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('dnsNameForPublicIP')[copyIndex()]))]"
               },
               "subnet": {
                 "id": "[variables('subnetRef')]"
