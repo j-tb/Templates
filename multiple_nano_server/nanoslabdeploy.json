@@ -125,7 +125,7 @@
     },
     "publicIPAddressName": {
       "type": "string",
-      "defaultValue": "nicpubip"
+      "defaultValue": "nicpubip_"
     },
     "vmName": {
       "type": "string",
@@ -283,7 +283,7 @@
             "properties": {
              "privateIPAllocationMethod": "Dynamic",
              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('dnsNameForPublicIP')[copyIndex()]))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('publicIPAddressName'), parameters('dnsNameForPublicIP')[copyIndex()]))]"
               },
               "subnet": {
                 "id": "[variables('subnetRef')]"
