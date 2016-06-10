@@ -330,7 +330,7 @@
           "osDisk": {
             "name": "[concat('osdisk_', concat('NanoVM-', copyIndex()))]" ,
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/NanoVM-',copyIndex(),'-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/NanoVM-',uniqueString(resourceGroup().id),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
