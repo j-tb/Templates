@@ -113,9 +113,9 @@
     "dnsNameForPublicIP": {
       "type": "array",
          "defaultValue": [ 
-         "Nanoa", 
-         "Nanob", 
-         "Nanoc" 
+         "nanoa", 
+         "nanob", 
+         "nanoc" 
          ] 
     },
   
