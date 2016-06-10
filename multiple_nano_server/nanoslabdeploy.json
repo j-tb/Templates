@@ -283,7 +283,7 @@
             "properties": {
              "privateIPAllocationMethod": "Dynamic",
              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('dnsNameForPublicIP')[copyIndex()])]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('dnsNameForPublicIP')[copyIndex()]))]"
               },
               "subnet": {
                 "id": "[variables('subnetRef')]"
