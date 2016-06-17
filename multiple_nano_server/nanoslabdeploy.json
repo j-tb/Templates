@@ -111,13 +111,9 @@
     },
     
     "dnsNameForPublicIP": {
-      "type": "array",
-         "defaultValue": [ 
-         "nanoa", 
-         "nanob", 
-         "nanoc" 
-         ] 
-    },
+      "type": "string",
+         "defaultValue": "nanodns" 
+      },
   
     "nicName": {
       "type": "string",
@@ -339,7 +335,7 @@
           "osDisk": {
             "name": "[concat('osdisk_', concat('NanoVM-', copyIndex()))]" ,
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/NanoVM-',copyIndex(),'-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/,('NanoVM-', copyIndex()),uniqueString(resourceGroup().id),'-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
