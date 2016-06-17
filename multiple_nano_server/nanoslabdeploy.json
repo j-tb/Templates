@@ -180,7 +180,7 @@
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "idleTimeoutInMinutes": 4,
         "dnsSettings": {
-          "domainNameLabel": "[concat(parameters('dnsNameForPublicIP')[copyIndex()])]"
+          "domainNameLabel": "[concat(parameters('dnsNameForPublicIP'),copyIndex())]"
         }
       },
        "copy": {
