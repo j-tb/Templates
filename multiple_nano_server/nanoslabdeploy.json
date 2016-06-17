@@ -174,7 +174,7 @@
      {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2015-06-15",
-      "name": "[concat(parameters('publicIPAddressName'), parameters('dnsNameForPublicIP')copyIndex())]", 
+      "name": "[concat(parameters('publicIPAddressName'), parameters('dnsNameForPublicIP'),copyIndex())]", 
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
