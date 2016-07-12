@@ -5,7 +5,7 @@
    "parameters": {
     "newStorageAccountName": {
       "type": "string",
-      "defaultValue": "linuxstor",
+      "defaultValue": "linuxlabstor",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
