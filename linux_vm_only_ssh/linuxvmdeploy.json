@@ -5,7 +5,7 @@
    "parameters": {
     "newStorageAccountName": {
       "type": "string",
-      "defaultValue": "smallstor",
+      "defaultValue": "linuxstor",
       "metadata": {
         "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
       }
@@ -23,7 +23,7 @@
     },
     "vnetName": {
       "type": "string",
-      "defaultValue": "SmallNet",
+      "defaultValue": "LinuxNet",
       "metadata": {
         "description": "VNet name"
       }
@@ -78,7 +78,7 @@
       }
     },
     "networkSecurityGroupName": {
-            "defaultValue": "NanoVMnsg",
+            "defaultValue": "LinuxVMnsg",
             "type": "string"
     },
     "OSVersion": {
@@ -101,19 +101,19 @@
 
    "dnsNameForPublicIP": {
       "type": "string",
-      "defaultValue": "smallcloudlab"
+      "defaultValue": "linuxlablab"
     },
     "nicName": {
       "type": "string",
-      "defaultValue": "smallcloud_nic1"
+      "defaultValue": "linuxlab_nic1"
     },
     "publicIPAddressName": {
       "type": "string",
-      "defaultValue": "smallcloudpubip"
+      "defaultValue": "linuxlabpubip"
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "NanoVM01"
+      "defaultValue": "LinuxVM01"
     },
     "vmSize": {
       "type": "string",
