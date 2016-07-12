@@ -5,37 +5,34 @@
   
   "parameters": {
     "newStorageAccountName": {
-      "value": "nanonanostor"
+      "value": "linuxstor"
     },
     "adminUsername": {
       "value": "sysadmin"
     },
-    "adminPassword": {
-      "value": "Passw0rd!"
-    },
     "dnsNameForPublicIP": {
-      "value": "smallnano01"
+      "value": "smalllinux01"
     },
     "location": {
       "value": "West US"
     },
     "vnetName": {
-      "value": "NanoNet"
+      "value": "LinuxNet"
     },
     "networkSecurityGroupName": {
-      "value": "NANOnsg"
+      "value": "Linuxnsg"
     },
-    "windowsOSVersion": {
-      "value": "2016-Nano-Server-Technical-Preview"
+    "OSVersion": {
+      "value": "16.04 LTS"
     },
     "nicName": {
-      "value": "NANO01_nic1"
+      "value": "Linux01_nic1"
     },
     "publicIPAddressName": {
-      "value": "nanolab_NANO01"
+      "value": "Linuxlab_Linux01"
     },
     "vmName": {
-      "value": "nanoNANO01"
+      "value": "Linux01"
     },
      "whichSubnet": {
       "value": "Subnet30"
