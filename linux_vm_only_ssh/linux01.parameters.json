@@ -23,7 +23,7 @@
       "value": "Linuxnsg"
     },
     "OSVersion": {
-      "value": "16.04 LTS"
+      "value": "16.04.0-LTS"
     },
     "nicName": {
       "value": "Linux01_nic1"

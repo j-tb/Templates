@@ -83,7 +83,7 @@
     },
     "OSVersion": {
       "type": "string",
-      "defaultValue": "2016-Nano-Server-Technical-Preview",
+      "defaultValue": "16.04.0-LTS",
       "allowedValues": [
         "12.10",
         "14.10",
