@@ -1,0 +1,59 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  
+  
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "azurestor"
+    },
+    "adminUsername": {
+      "reference": {
+      "keyVault": {
+        "id": "/subscriptions/{guid}/resourceGroups/{RGName}/providers/Microsoft.KeyVault/vaults/MyKeyVault"
+      }, 
+      "secretName": "ServerAdminName" 
+       } 
+    },
+   "adminPassword": {
+      "reference": {
+      "keyVault": {
+        "id": "/subscriptions/{guid}/resourceGroups/{RGName}/providers/Microsoft.KeyVault/vaults/MyKeyVault"
+      }, 
+      "secretName": "ServerAdminPassword" 
+       } 
+    },
+    "dnsNameForPublicIP": {
+      "value": "mydns"
+    },
+    "location": {
+      "value": "West US"
+    },
+    "vnetName": {
+      "value": "MyNet"
+    },
+    "networkSecurityGroupName": {
+      "value": "COREnsg"
+    },
+    "windowsOSVersion": {
+      "value": "2016-Nano-Server-Technical-Preview"
+    },
+    "nicName": {
+      "value": "NANO_nic1"
+    },
+    "publicIPAddressName": {
+      "value": "NANO_ip"
+    },
+    "vmName": {
+      "value": "VMName"
+    },
+     "whichSubnet": {
+      "value": "Subnet10"
+     }
+    
+    
+  }
+}
+
+
+
