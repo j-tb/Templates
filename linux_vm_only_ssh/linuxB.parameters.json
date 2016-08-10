@@ -11,7 +11,7 @@
       "value": "sysadmin"
     },
     "dnsNameForPublicIP": {
-      "value": "linuxB"
+      "value": "peeringlinuxB"
     },
     "location": {
       "value": "East US"
