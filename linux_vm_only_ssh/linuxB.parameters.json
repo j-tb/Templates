@@ -1,0 +1,46 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  
+  
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "peeringstor"
+    },
+    "adminUsername": {
+      "value": "sysadmin"
+    },
+    "dnsNameForPublicIP": {
+      "value": "linuxB"
+    },
+    "location": {
+      "value": "West US"
+    },
+    "vnetName": {
+      "value": "BigNetB"
+    },
+    "networkSecurityGroupName": {
+      "value": "Linuxnsg"
+    },
+    "OSVersion": {
+      "value": "16.04.0-LTS"
+    },
+    "nicName": {
+      "value": "LinuxB_nic1"
+    },
+    "publicIPAddressName": {
+      "value": "Peeringlab_LinuxB"
+    },
+    "vmName": {
+      "value": "LinuxB"
+    },
+     "whichSubnet": {
+      "value": "Subnet10"
+     }
+    
+    
+  }
+}
+
+
+
