@@ -1,0 +1,46 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  
+  
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "devopsstor"
+    },
+    "adminUsername": {
+      "value": "sysadmin"
+    },
+    "dnsNameForPublicIP": {
+      "value": "devopslinux01"
+    },
+    "location": {
+      "value": "West US"
+    },
+    "vnetName": {
+      "value": "DevopsNet"
+    },
+    "networkSecurityGroupName": {
+      "value": "devopsnsg"
+    },
+    "OSVersion": {
+      "value": "16.04.0-LTS"
+    },
+    "nicName": {
+      "value": "Linux01_nic1"
+    },
+    "publicIPAddressName": {
+      "value": "Devopslab_Linux01"
+    },
+    "vmName": {
+      "value": "Linux01"
+    },
+     "whichSubnet": {
+      "value": "Subnet30"
+     }
+    
+    
+  }
+}
+
+
+
