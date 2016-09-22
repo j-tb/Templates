@@ -32,10 +32,10 @@
       "value": "NANO_nic"
     },
     "publicIPAddressName": {
-      "value": "nanolab_NANO"
+      "value": "svcc_NANO"
     },
     "vmName": {
-      "value": "nanoNANO01"
+      "value": "NANO01"
     },
      "whichSubnet": {
       "value": "Subnet30"
