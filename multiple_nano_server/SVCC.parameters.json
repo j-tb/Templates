@@ -29,10 +29,10 @@
       "value": "2016-Nano-Server-Technical-Preview"
     },
     "nicName": {
-      "value": "NANO01_nic1"
+      "value": "NANO_nic"
     },
     "publicIPAddressName": {
-      "value": "nanolab_NANO01"
+      "value": "nanolab_NANO"
     },
     "vmName": {
       "value": "nanoNANO01"
