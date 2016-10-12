@@ -39,7 +39,7 @@
   {
     "apiVersion": "2016-06-01",
     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-    "name": "BigNetA/LinkToBigNetB",
+    "name": "BigNetA-LinkToBigNetB",
     "location": "[resourceGroup().location]",
      "dependsOn": [
           "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB]",
@@ -59,7 +59,7 @@
     {
     "apiVersion": "2016-06-01",
     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-    "name": "BigNetB/LinkToBigNetA",
+    "name": "BigNetB-LinkToBigNetA",
     "location": "[resourceGroup().location]",
       "dependsOn": [
           "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA]",
