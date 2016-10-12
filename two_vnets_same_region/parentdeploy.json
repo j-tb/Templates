@@ -5,7 +5,7 @@
   "resources": [
      { 
      "apiVersion": "2016-06-01", 
-     "name": "linkedTemplate-vnet1", 
+     "name": "linkedTemplate", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
        "mode": "Incremental", 
@@ -21,7 +21,7 @@
   },
   { 
      "apiVersion": "2016-06-01", 
-     "name": "linkedTemplate-vnet2", 
+     "name": "linkedTemplate", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
        "mode": "Incremental", 
