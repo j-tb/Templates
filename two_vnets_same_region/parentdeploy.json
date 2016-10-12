@@ -42,8 +42,8 @@
     "name": "BigNetA/LinkToBigNetB",
     "location": "[resourceGroup().location]",
      "dependsOn": [
-          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB']",
-          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA']"
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB')]",
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA')]"
         ],
     "properties": {
     "allowVirtualNetworkAccess": true,
@@ -62,8 +62,8 @@
     "name": "BigNetB/LinkToBigNetA",
     "location": "[resourceGroup().location]",
       "dependsOn": [
-          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA']",
-          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB']"
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA')]",
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB')]"
         ],
     "properties": {
     "allowVirtualNetworkAccess": true,
