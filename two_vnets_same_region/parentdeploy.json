@@ -1,10 +1,10 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  
+
   "resources": [
      { 
-     "apiVersion": "2015-01-01", 
+     "apiVersion": "2016-06-01", 
      "name": "linkedTemplate-vnet1", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
@@ -20,7 +20,7 @@
      } 
   },
   { 
-     "apiVersion": "2015-01-01", 
+     "apiVersion": "2016-06-01", 
      "name": "linkedTemplate-vnet2", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
@@ -34,7 +34,49 @@
           "contentVersion":"1.0.0.0"
        } 
      } 
-  } 
+  },
+
+  {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "BigNetA/LinkToBigNetB",
+    "location": "[resourceGroup().location]",
+     "dependsOn": [
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB]",
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA]"
+        ],
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'BigNetB')]"       
+}
+    }
+    },
+
+    {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "BigNetB/LinkToBigNetA",
+    "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetA]",
+          "[concat('Microsoft.Network/virtualNetworks/', 'BigNetB]"
+        ],
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'BigNetA')]"       
+        }
+    }
+    }
+
+
   ],
   "outputs": {
     "result": {
