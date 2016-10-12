@@ -336,7 +336,7 @@
       
       {
    "type": "Microsoft.Compute/virtualMachines/extensions",
-   "name" : "[concat(variables('vmName'),'/FileCopy')]",
+   "name" : "[concat(parameters('vmName'),'/FileCopy')]",
    "apiVersion": "2015-06-15",
    "location" : "[resourceGroup().location]",
    "dependsOn": [
