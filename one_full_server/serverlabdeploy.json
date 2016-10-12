@@ -336,8 +336,8 @@
       
       {
    "type": "Microsoft.Compute/virtualMachines/extensions",
-   "name": "MyCustomScriptExtension",
-   "apiVersion": "2015-05-01-preview",
+   "name": "ServerFileCopy",
+   "apiVersion": "2015-06-15",
    "location": "[parameters('location')]",
    "dependsOn": [
        "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
@@ -349,9 +349,9 @@
        "autoUpgradeMinorVersion":true,
        "settings": {
            "fileUris": [
-           "https://imperfectlab.blob.core.windows.net/VMscript.ps1"
+           "https://imperfectlab.blob.core.windows.net/files/VMscript.ps1"
        ],
-       "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File start.ps1"
+       "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File VMscript.ps1"
      }
    }
  }
