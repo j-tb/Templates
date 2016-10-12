@@ -5,34 +5,37 @@
   
   "parameters": {
     "newStorageAccountName": {
-      "value": "devoplabsstor"
+      "value": "winserverstor"
     },
     "adminUsername": {
       "value": "sysadmin"
     },
+    "adminPassword": {
+      "value": "Passw0rd!"
+    },
     "dnsNameForPublicIP": {
-      "value": "devopslinux01"
+      "value": "smallwin01"
     },
     "location": {
       "value": "West US"
     },
     "vnetName": {
-      "value": "DevopsNet"
+      "value": "WindowsNet"
     },
     "networkSecurityGroupName": {
-      "value": "devopsnsg"
+      "value": "Servernsg"
     },
-    "OSVersion": {
-      "value": "16.04.0-LTS"
+    "windowsOSVersion": {
+      "value": "2016-Datacenter"
     },
     "nicName": {
-      "value": "Linux01_nic1"
+      "value": "Win01_nic1"
     },
     "publicIPAddressName": {
-      "value": "Devopslab_Linux01"
+      "value": "Winlab_NANO01"
     },
     "vmName": {
-      "value": "Linux01"
+      "value": "WinServer01"
     },
      "whichSubnet": {
       "value": "Subnet30"
