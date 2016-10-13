@@ -2,7 +2,17 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
+    "location": {
+      "type": "string",
+      "defaultValue": "West US",
+      "allowedValues": [
+          "West US",
+          "East US"
+       ],
+      "metadata": {
+        "description": "Deployment location"
+      }
+    },
     "vnetName": {
       "type": "string",
       "defaultValue": "SmallNet",
@@ -69,7 +79,7 @@
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
