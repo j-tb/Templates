@@ -1,0 +1,49 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  
+  
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "xyzstor"
+    },
+    "adminUsername": {
+      "value": "sysadmin"
+    },
+    "sshKeyData": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAjeBwk//qNf9NbJdx7HsQqvH7CjJBMVYQYSfQUlilb8eQ8nTc1HUwgAB2trrFXd8JxpOumLys58bgVLGva8+UGzwnV8hp+/OLaRBte0N51ryU5IFE6MTzNmINkr57BwxgLxMfayYHLDIKFFoJT7yVfnkTsr9I3DlJqm+lmERITG7ePj2fEsoql3kBZFioZdD8RdABCeJTGH/ZeGhXxl1q4aiZaLg1e2ONzf+Txw37Pz/rFqBeYbpa8ZnJRJagH3DnvEyPICIBHrpYR+1hXN2lJ58+ibOGKD9FeHTZk10o6AICEZk91rCVFcnf6GZpw+6AWpnQyh9J2O/8Ut/HAMQi+w== rsa-key-20160810"
+    },
+    "dnsNameForPublicIP": {
+      "value": "linuxxyz"
+    },
+    "location": {
+      "value": "West US"
+    },
+    "vnetName": {
+      "value": "xyznet"
+    },
+    "networkSecurityGroupName": {
+      "value": "xyznsg"
+    },
+    "OSVersion": {
+      "value": "16.04.0-LTS"
+    },
+    "nicName": {
+      "value": "Linuxxyz_nic1"
+    },
+    "publicIPAddressName": {
+      "value": "Lab_LinuxXYZ"
+    },
+    "vmName": {
+      "value": "LinuxXYZ"
+    },
+     "whichSubnet": {
+      "value": "Subnet10"
+     }
+    
+    
+  }
+}
+
+
+
