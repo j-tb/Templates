@@ -373,8 +373,8 @@
     "typeHandlerVersion": "1.5",
     "autoUpgradeMinorVersion": true,
     "settings": {
-      "fileUris": ["https://raw.githubusercontent.com/saltstack/salt-bootstrap/develop/bootstrap-salt.sh"],
-      "commandToExecute":"sh bootstrap-salt.sh"
+      "fileUris": ["https://raw.githubusercontent.com/techbunny/Templates/master/linux_vm_only_ssh/saltinstall.sh"],
+      "commandToExecute":"sh saltinstall.sh"
     }
     }
 }
