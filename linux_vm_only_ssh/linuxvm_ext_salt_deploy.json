@@ -361,7 +361,7 @@
 
       {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "SaltInstall",
+  "name": "[concat(parameters('vmName'),'/SaltInstall')]",
   "apiVersion": "2015-06-15",
   "location": "[resourceGroup().location]",
   "dependsOn": [
