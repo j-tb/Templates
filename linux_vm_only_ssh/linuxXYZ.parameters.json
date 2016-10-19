@@ -15,7 +15,7 @@
       "keyVault": {
         "id": "/subscriptions/8bae2860-70c1-4614-b55a-60e97f4248dc/resourceGroups/LabArtifacts/providers/Microsoft.KeyVault/vaults/GeneralKeyVault"
       }, 
-      "secretName": "DevOpsPrivateKey" 
+      "secretName": "DevOpsKey" 
        }
     },
     "dnsNameForPublicIP": {
