@@ -1,0 +1,61 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  
+  
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "peeringstor"
+       },
+       
+    "adminUsername": {
+      "reference": {
+      "keyVault": {
+        "id": "/subscriptions/{guid}/resourceGroups/{RGName}/providers/Microsoft.KeyVault/vaults/GeneralKeyVault"
+      }, 
+      "secretName": "ServerAdminName" 
+       } 
+    },
+    "sshKeyData": {
+       "reference": {
+      "keyVault": {
+        "id": "/subscriptions/{guid}/resourceGroups/{RGName}/providers/Microsoft.KeyVault/vaults/GeneralKeyVault"
+      }, 
+      "secretName": "DevOpsPrivateKey" 
+       }
+    },
+
+    "dnsNameForPublicIP": {
+      "value": "peeringlinuxa"
+    },
+    "location": {
+      "value": "East US"
+    },
+    "vnetName": {
+      "value": "BigNetA"
+    },
+    "networkSecurityGroupName": {
+      "value": "Linuxnsg"
+    },
+    "OSVersion": {
+      "value": "16.04.0-LTS"
+    },
+    "nicName": {
+      "value": "LinuxA_nic1"
+    },
+    "publicIPAddressName": {
+      "value": "Peeringlab_LinuxA"
+    },
+    "vmName": {
+      "value": "LinuxA"
+    },
+     "whichSubnet": {
+      "value": "Subnet10"
+     }
+    
+    
+  }
+}
+
+
+
