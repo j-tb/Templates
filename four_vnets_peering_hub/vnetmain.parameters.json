@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "Central US"
+    },
+    "vnetName": {
+      "value": "LTO_VNET"
+    },
+    "vnetAddressPrefix": {
+      "value": "10.100.0.0/16"
+    },
+    "subnet1Name": {
+      "value": "LTO"
+    },
+    "subnet1Prefix": {
+      "value": "10.100.10.0/24"
+    },
+    "subnet2Name": {
+      "value": "JUMP"
+    },
+    "subnet2Prefix": {
+      "value": "10.100.11.0/26"
+    },
+    "subnet3Name": {
+      "value": "DB"
+    },
+    "subnet3Prefix": {
+      "value": "10.100.20.0/26"
+    }
+  }
+}
