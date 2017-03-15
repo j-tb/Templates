@@ -6,7 +6,7 @@
   {
     "apiVersion": "2016-06-01",
     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-    "name": "BigNetA/LinkToBigNetB",
+    "name": "LTO_VNET/LinkToMC2",
     "location": "[resourceGroup().location]",
   
     "properties": {
@@ -15,7 +15,7 @@
     "allowGatewayTransit": false,
     "useRemoteGateways": false,
         "remoteVirtualNetwork": {
-        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'BigNetB')]"       
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'WWRN_MC2_VNET')]"       
 }
     }
     },
@@ -23,7 +23,7 @@
     {
     "apiVersion": "2016-06-01",
     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-    "name": "BigNetB/LinkToBigNetA",
+    "name": "WWRN_MC2_VNET/LinkToLTO",
     "location": "[resourceGroup().location]",
 
     "properties": {
@@ -32,11 +32,76 @@
     "allowGatewayTransit": false,
     "useRemoteGateways": false,
         "remoteVirtualNetwork": {
-        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'BigNetA')]"       
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'LTO_VNET')]"       
+        }
+    }
+    },
+     {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "LTO_VNET/LinkToSC",
+    "location": "[resourceGroup().location]",
+  
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'WWRN_SC_VNET')]"       
+}
+    }
+    },
+
+    {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "WWRN_SC_VNET/LinkToLTO",
+    "location": "[resourceGroup().location]",
+
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'LTO_VNET')]"       
+        }
+    }
+    },
+    {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "LTO_VNET/LinkToNJ",
+    "location": "[resourceGroup().location]",
+  
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'WWRN_NJ_VNET')]"       
+}
+    }
+    },
+
+    {
+    "apiVersion": "2016-06-01",
+    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "name": "WWRN_NJ_VNET/LinkToLTO",
+    "location": "[resourceGroup().location]",
+
+    "properties": {
+    "allowVirtualNetworkAccess": true,
+    "allowForwardedTraffic": false,
+    "allowGatewayTransit": false,
+    "useRemoteGateways": false,
+        "remoteVirtualNetwork": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworks', 'LTO_VNET')]"       
         }
     }
     }
-
-
+    
     ]
   }

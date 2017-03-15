@@ -5,32 +5,16 @@
   "resources": [
      { 
      "apiVersion": "2015-01-01", 
-     "type": "Microsoft.Resources/deployments", 
-     "name": "linkedTemplateA", 
-     "properties": { 
-       "mode": "Incremental", 
-       "templateLink": {
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/azuredeploy.json",
-          "contentVersion":"1.0.0.0"
-       }, 
-       "parametersLink": { 
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/vnet1.parameters.json",
-          "contentVersion":"1.0.0.0"
-       } 
-     } 
-  },
-  { 
-     "apiVersion": "2015-01-01", 
       "type": "Microsoft.Resources/deployments", 
-      "name": "linkedTemplateB", 
+      "name": "linkedTemplateA", 
      "properties": { 
        "mode": "Incremental", 
        "templateLink": {
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/azuredeploy.json",
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/azuredeployproxnet.json",
           "contentVersion":"1.0.0.0"
        }, 
        "parametersLink": { 
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/vnet2.parameters.json",
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/mc2_vnet.parameters.json",
           "contentVersion":"1.0.0.0"
        } 
      } 
@@ -38,15 +22,32 @@
     { 
      "apiVersion": "2015-01-01", 
       "type": "Microsoft.Resources/deployments", 
+      "name": "linkedTemplateB", 
+     "properties": { 
+       "mode": "Incremental", 
+       "templateLink": {
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/azuredeployproxnet.json",
+          "contentVersion":"1.0.0.0"
+       }, 
+       "parametersLink": { 
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/sc_vnet.parameters.json",
+          "contentVersion":"1.0.0.0"
+       } 
+     } 
+  },
+
+  { 
+     "apiVersion": "2015-01-01", 
+      "type": "Microsoft.Resources/deployments", 
       "name": "linkedTemplateC", 
      "properties": { 
        "mode": "Incremental", 
        "templateLink": {
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/azuredeploy.json",
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/azuredeployproxnet.json",
           "contentVersion":"1.0.0.0"
        }, 
        "parametersLink": { 
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/vnet2.parameters.json",
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/nj_vnet.parameters.json",
           "contentVersion":"1.0.0.0"
        } 
      } 
