@@ -60,7 +60,7 @@
      "properties": { 
        "mode": "Incremental", 
        "templateLink": {
-          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/two_vnets_same_region/peeringdeploy.json",
+          "uri":"https://raw.githubusercontent.com/techbunny/Templates/master/four_vnets_peering_hub/peeringdeploy.json",
           "contentVersion":"1.0.0.0"
          } 
      } 
