@@ -13,7 +13,8 @@
       "type": "securestring",
       "metadata": {
         "description": "The password for the Administrator account of the new VM and Domain"
-      }
+      },
+      "defaultValue": "123uiodghskeihjfl111!!"
     },
     "domainName": {
       "type": "string",
