@@ -21,25 +21,11 @@
         "description": "The FQDN of the AD Domain created "
       }
     },
-    "dnsPrefix": {
+    "ADCpubIP": {
       "type": "string",
       "metadata": {
-        "description": "The DNS prefix for the public IP address used by the Load Balancer"
+        "description": "The DNS name for the public IP address used by the Load Balancer"
       }
-    },
-    "pdcRDPPort": {
-      "type": "int",
-      "metadata": {
-        "description": "The public RDP port for the PDC VM"
-      },
-      "defaultValue": 3389
-    },
-    "bdcRDPPort": {
-      "type": "int",
-      "metadata": {
-        "description": "The public RDP port for the BDC VM"
-      },
-      "defaultValue": 13389
     },
     "_artifactsLocation": {
       "type": "string",
@@ -64,7 +50,7 @@
     "imageOffer": "WindowsServer",
     "imageSKU": "2016-Datacenter",
     "adAvailabilitySetName": "adAvailabiltySet",
-    "publicIPAddressName": "ad-lb-pip",
+    "publicIPAddressName": "dc1pip",
     "adVMSize": "Standard_D1",
     "virtualNetworkName": "adVNET",
     "virtualNetworkAddressRange": "10.0.0.0/16",
@@ -74,14 +60,13 @@
     "adPDCNicIPAddress": "10.0.0.4",
     "adSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]",
     "adPDCDataDisk": "ADPDCDataDisk",
-     "adDataDiskSize": 1000,
+    "adDataDiskSize": 1000,
     "vnetTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/vnet.json', parameters('_artifactsLocationSasToken'))]",
     "nicTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/nic.json', parameters('_artifactsLocationSasToken'))]",
     "vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/vnet-with-dns-server.json', parameters('_artifactsLocationSasToken'))]",
     "configureADBDCTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/configureADBDC.json', parameters('_artifactsLocationSasToken'))]",
     "adPDCModulesURL": "[concat(parameters('_artifactsLocation'),'/DSC/CreateADPDC.zip', parameters('_artifactsLocationSasToken'))]",
-    "adPDCConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
-
+    "adPDCConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC"
   },
   "resources": [
     {
@@ -102,7 +87,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsPrefix')]"
+          "domainNameLabel": "[parameters('ADCpubIP')]"
         }
       }
     },
@@ -144,7 +129,9 @@
       "apiVersion": "2016-10-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-       ],
+        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+      ],
       "properties": {
         "ipConfigurations": [
           {
@@ -152,6 +139,8 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('adPDCNicIPAddress')]",
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+              },
               "subnet": {
                 "id": "[variables('adSubnetRef')]"
               }             
