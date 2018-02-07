@@ -134,10 +134,6 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2016-10-01",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-      ],
       "properties": {
         "ipConfigurations": [
           {
@@ -145,8 +141,6 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('adPDCNicIPAddress')]",
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-              },
               "subnet": {
                 "id": "[variables('adSubnetRef')]"
               }             
@@ -159,7 +153,7 @@
     {
       "name": "[variables('adPDCVMName')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-05-01-preview",  "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]",
