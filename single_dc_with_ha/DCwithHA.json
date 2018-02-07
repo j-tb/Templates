@@ -153,7 +153,7 @@
     {
       "name": "[variables('adPDCVMName')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-05-01-preview",  "2016-03-30",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]",
