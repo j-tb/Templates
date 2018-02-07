@@ -104,6 +104,26 @@
       "location": "[resourceGroup().location]"
     },
     {
+      "name": "[variables('adPDCNicName')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2016-10-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[variables('adPDCNicIPAddress')]",
+              "subnet": {
+                "id": "[variables('adSubnetRef')]"
+              }             
+            }
+          }
+        ]
+      }
+    },
+    {
       "name": "VNet",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
