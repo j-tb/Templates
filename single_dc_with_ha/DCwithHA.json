@@ -13,8 +13,7 @@
       "type": "securestring",
       "metadata": {
         "description": "The password for the Administrator account of the new VM and Domain"
-      },
-      "defaultValue": "123uiodghskeihjfl111!!"
+      }
     },
     "domainName": {
       "type": "string",
@@ -64,7 +63,7 @@
     "adSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]",
     "adPDCDataDisk": "ADPDCDataDisk",
     "adDataDiskSize": 1000,
-    "vnetTemplateUri": "https://raw.githubusercontent.com/techbunny/Templates/master/single_dc_with_ha/nestedtemplates/vnet.json",
+    "vnetTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/vnet.json', parameters('_artifactsLocationSasToken'))]",
     "nicTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/nic.json', parameters('_artifactsLocationSasToken'))]",
     "vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'),'/nestedtemplates/vnet-with-dns-server.json', parameters('_artifactsLocationSasToken'))]",
     "adPDCModulesURL": "[concat(parameters('_artifactsLocation'),'/DSC/CreateADPDC.zip', parameters('_artifactsLocationSasToken'))]",
@@ -119,6 +118,8 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('adPDCNicIPAddress')]",
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+              },
               "subnet": {
                 "id": "[variables('adSubnetRef')]"
               }             
@@ -153,10 +154,10 @@
         }
       }
     },
-     {
+    {
       "name": "[variables('adPDCVMName')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts',variables('vhdStorageAccountName'))]",
@@ -183,17 +184,16 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds0/','osdisk.vhd')]"
-            },
             "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "[variables('storageAccountType')]"
+            }
           },
           "dataDisks": [
             {
-              "vhd": {
-                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('vhdStorageAccountName'))).primaryEndpoints.blob,'vhds0/', variables('adPDCDataDisk'),'-1.vhd')]"
+              "managedDisk": {
+                "storageAccountType": "[variables('storageAccountType')]"
               },
               "name": "[concat(variables('adPDCVMName'),'-data-disk1')]",
               "caching": "None",
