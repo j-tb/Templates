@@ -23,7 +23,7 @@
       },
       "defaultValue": "autodeskad.local"
     },
-    "ADCpubIP": {
+    "dnsPrefix": {
       "type": "string",
       "metadata": {
         "description": "The DNS name for the public IP address used by the Load Balancer"
@@ -74,7 +74,7 @@
     {
       "name": "[variables('vhdStorageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2017-06-01",
       "location": "[resourceGroup().location]",
       "properties": {
       },
@@ -89,14 +89,18 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('ADCpubIP')]"
+          "domainNameLabel": "[parameters('dnsPrefix')]"
         }
       }
     },
     {
       "name": "[variables('adAvailabilitySetName')]",
       "type": "Microsoft.Compute/availabilitySets",
-      "apiVersion": "2016-03-30",
+      "apiVersion": "2017-03-30",
+      "properties": {
+        "platformFaultDomainCount": 3,
+        "platformUpdateDomainCount": 2
+      },
       "location": "[resourceGroup().location]"
     },
     {
@@ -198,7 +202,7 @@
               "caching": "None",
               "diskSizeGB": "[variables('adDataDiskSize')]",
               "lun": 0,
-              "createOption": "empty"
+              "createOption": "Empty"
             }
           ]
         },
