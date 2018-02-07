@@ -20,13 +20,15 @@
       "type": "string",
       "metadata": {
         "description": "The FQDN of the AD Domain created "
-      }
+      },
+      "defaultValue": "autodeskad.local"
     },
     "ADCpubIP": {
       "type": "string",
       "metadata": {
         "description": "The DNS name for the public IP address used by the Load Balancer"
-      }
+      },
+      "defaultValue": "adc1ipout"
     },
     "_artifactsLocation": {
       "type": "string",
