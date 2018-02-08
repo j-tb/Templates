@@ -35,10 +35,6 @@
         "description": "Auto-generated token to access _artifactsLocation"
       },
       "defaultValue": ""
-    },
-    "publicIPAddressName": {
-      "type": "string",
-      "defaultValue": "dc1pip"
     }
   },
   "variables": {
