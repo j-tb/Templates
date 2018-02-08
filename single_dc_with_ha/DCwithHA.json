@@ -88,12 +88,12 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[variables('adPDCNicIPAddress')]"
-              },
+              "privateIPAddress": "[variables('adPDCNicIPAddress')]",
               "subnet": {
                 "id": "[variables('adSubnetRef')]"
               }             
             }
+          }
         ]
       }
     },
