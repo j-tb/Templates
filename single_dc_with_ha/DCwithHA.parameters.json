@@ -8,14 +8,8 @@
     "adminPassword": {
       "value": "Passw0rd12345!!"
     },
-    "dnsPrefix": {
-      "value": "adcoutsideip"
-    },
     "domainName": {
       "value": "mydomain.local"
-    },
-    "publicIPAddressName": {
-      "value": "dc1pip"
     }
   }
 }

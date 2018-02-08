@@ -21,15 +21,8 @@
         "description": "The FQDN of the AD Domain created "
       },
       "defaultValue": "autodeskad.local"
-    },
-    "dnsPrefix": {
-      "type": "string",
-      "metadata": {
-        "description": "The DNS name for the public IP address used by the Load Balancer"
-      },
-      "defaultValue": "adc1ipout"
-    },
-    "_artifactsLocation": {
+     },
+      "_artifactsLocation": {
       "type": "string",
       "metadata": {
         "description": "The location of resources, such as templates and DSC modules, that the template depends on"
@@ -73,19 +66,8 @@
   },
   "resources": [
     {
-      "name": "[parameters('publicIPAddressName')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2016-10-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic",
-        "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsPrefix')]"
-        }
-      }
-    },
-    {
       "name": "[variables('adAvailabilitySetName')]",
+      "location": "[resourceGroup().location]",
       "type": "Microsoft.Compute/availabilitySets",
       "apiVersion": "2017-03-30",
       "properties": {
@@ -94,8 +76,7 @@
       },
       "sku": {
         "name": "Aligned"
-    },
-      "location": "[resourceGroup().location]"
+      }      
     },
     {
       "name": "[variables('adPDCNicName')]",
@@ -103,7 +84,6 @@
       "apiVersion": "2016-10-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
         "[resourceId('Microsoft.Resources/deployments/', 'VNet')]"
       ],
       "properties": {
@@ -112,14 +92,12 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[variables('adPDCNicIPAddress')]",
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+              "privateIPAddress": "[variables('adPDCNicIPAddress')]"
               },
               "subnet": {
                 "id": "[variables('adSubnetRef')]"
               }             
             }
-          }
         ]
       }
     },
